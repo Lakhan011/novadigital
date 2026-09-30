@@ -78,11 +78,11 @@ export default function FAQ() {
               <div className="absolute top-[10%] right-[10%] w-[80%] h-[80%] bg-[#315CF5]/5 rounded-full blur-[60px]"></div>
 
               {/* Image 1 (Main) */}
-              <div className="absolute top-0 right-[10%] w-[80%] h-[75%] rounded-none overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.15)] bg-gradient-to-br from-blue-100 to-purple-100 border-4 border-white">
+              <div className="absolute top-0 left-[40%] w-[80%] h-[75%] rounded-none overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.15)] bg-gradient-to-br from-blue-100 to-purple-100 border-4 border-white">
                 <img 
                   src="/images/faq-main.png" 
                   alt="FAQ Main" 
-                  className="w-full h-full object-cover object-center"
+                  className="w-full h-full object-cover object-right"
                 />
               </div>
               
