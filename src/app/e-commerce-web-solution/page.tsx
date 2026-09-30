@@ -71,7 +71,7 @@ export default function ECommerceSolution() {
       </section>
 
       {/* Services Grid Section */}
-      <section className="container-main py-12 mb-24 flex flex-col lg:flex-row gap-8 lg:gap-16">
+      <section className="container-main mt-16 lg:mt-24 py-12 mb-24 flex flex-col lg:flex-row gap-8 lg:gap-16">
         <div className="lg:w-[300px] shrink-0 pt-8">
           <div className="sticky top-32 h-full flex flex-col items-center">
             <img 
@@ -206,9 +206,9 @@ export default function ECommerceSolution() {
       </section>
 
       {/* Our eCommerce Development Approach */}
-      <section className="container-main py-24 mb-16 border-t border-gray-100">
-        <div className="flex flex-col lg:flex-row gap-16 items-center">
-          <div className="flex-1 max-w-lg">
+      <section className="container-main mt-16 lg:mt-32 pt-24 pb-16 mb-16 border-t border-gray-100">
+        <div className="flex flex-col lg:flex-row gap-24 lg:gap-32 items-center justify-between">
+          <div className="flex-1 max-w-xl lg:pr-12">
             <h2 className="text-[32px] md:text-[38px] font-bold text-navy mb-6 leading-tight">
               Our eCommerce Development Approach
             </h2>
@@ -219,30 +219,47 @@ export default function ECommerceSolution() {
               See How We Work <ArrowRight className="w-4 h-4" />
             </button>
           </div>
-          <div className="flex-1 flex justify-center relative w-full max-w-[500px] aspect-square">
+          <div className="flex-1 flex justify-center relative w-full min-w-[320px] max-w-[440px] aspect-square mx-auto lg:mx-0">
             <div className="absolute inset-0 rounded-full border border-gray-200 m-8 animate-[spin_60s_linear_infinite]" />
             <div className="absolute inset-4 rounded-full border border-gray-100 m-8 animate-[spin_40s_linear_infinite_reverse]" />
             
-            {/* Steps in Circle */}
-            <div className="absolute top-0 left-1/2 -translate-x-1/2 flex flex-col items-center -mt-4">
-              <span className="text-[13px] font-bold text-navy mb-2">Workshops</span>
-              <div className="w-14 h-14 bg-[#074770] text-white rounded-lg flex items-center justify-center shadow-lg"><Users className="w-6 h-6" /></div>
-            </div>
-            <div className="absolute right-0 top-[30%] translate-x-4 flex flex-col items-center">
-              <span className="text-[13px] font-bold text-navy mb-2">Kick-off</span>
-              <div className="w-14 h-14 bg-[#074770] text-white rounded-lg flex items-center justify-center shadow-lg"><Search className="w-6 h-6" /></div>
-            </div>
-            <div className="absolute right-12 bottom-8 translate-x-4 flex flex-col items-center">
-              <div className="w-14 h-14 bg-[#074770] text-white rounded-lg flex items-center justify-center shadow-lg mb-2"><PenTool className="w-6 h-6" /></div>
-              <span className="text-[13px] font-bold text-navy">UX/UI Design</span>
-            </div>
-            <div className="absolute left-12 bottom-8 -translate-x-4 flex flex-col items-center">
-              <div className="w-14 h-14 bg-[#074770] text-white rounded-lg flex items-center justify-center shadow-lg mb-2"><Code className="w-6 h-6" /></div>
-              <span className="text-[13px] font-bold text-navy">Development</span>
-            </div>
-            <div className="absolute left-0 top-[30%] -translate-x-4 flex flex-col items-center">
-              <span className="text-[13px] font-bold text-navy mb-2">Delivery & Support</span>
-              <div className="w-14 h-14 bg-[#074770] text-white rounded-lg flex items-center justify-center shadow-lg"><Wrench className="w-6 h-6" /></div>
+            {/* Spinning Container for orbital movement */}
+            <div className="absolute inset-0 animate-[spin_40s_linear_infinite]">
+              {/* Steps in Circle */}
+              <div className="absolute top-0 left-1/2 -translate-x-1/2 -mt-4">
+                <div className="flex flex-col items-center animate-[spin_40s_linear_infinite_reverse]">
+                  <span className="text-[13px] font-bold text-navy mb-2">Workshops</span>
+                  <div className="w-14 h-14 bg-[#074770] text-white rounded-lg flex items-center justify-center shadow-lg"><Users className="w-6 h-6" /></div>
+                </div>
+              </div>
+              
+              <div className="absolute right-0 top-[30%] translate-x-4">
+                <div className="flex flex-col items-center animate-[spin_40s_linear_infinite_reverse]">
+                  <span className="text-[13px] font-bold text-navy mb-2">Kick-off</span>
+                  <div className="w-14 h-14 bg-[#074770] text-white rounded-lg flex items-center justify-center shadow-lg"><Search className="w-6 h-6" /></div>
+                </div>
+              </div>
+
+              <div className="absolute right-12 bottom-8 translate-x-4">
+                <div className="flex flex-col items-center animate-[spin_40s_linear_infinite_reverse]">
+                  <div className="w-14 h-14 bg-[#074770] text-white rounded-lg flex items-center justify-center shadow-lg mb-2"><PenTool className="w-6 h-6" /></div>
+                  <span className="text-[13px] font-bold text-navy">UX/UI Design</span>
+                </div>
+              </div>
+
+              <div className="absolute left-12 bottom-8 -translate-x-4">
+                <div className="flex flex-col items-center animate-[spin_40s_linear_infinite_reverse]">
+                  <div className="w-14 h-14 bg-[#074770] text-white rounded-lg flex items-center justify-center shadow-lg mb-2"><Code className="w-6 h-6" /></div>
+                  <span className="text-[13px] font-bold text-navy">Development</span>
+                </div>
+              </div>
+
+              <div className="absolute left-0 top-[30%] -translate-x-4">
+                <div className="flex flex-col items-center animate-[spin_40s_linear_infinite_reverse]">
+                  <span className="text-[13px] font-bold text-navy mb-2 whitespace-nowrap">Delivery & Support</span>
+                  <div className="w-14 h-14 bg-[#074770] text-white rounded-lg flex items-center justify-center shadow-lg"><Wrench className="w-6 h-6" /></div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -254,7 +271,7 @@ export default function ECommerceSolution() {
           <div className="flex-1 w-full relative">
             {/* Placeholder for Team Image */}
             <div className="w-full aspect-[16/10] bg-gray-200 rounded-lg shadow-sm flex items-center justify-center overflow-hidden">
-               <img src="/team.jpg" alt="Meet Our Team" className="w-full h-full object-cover" />
+               <img src="/team_in_office.avif" alt="Meet Our Team" className="w-full h-full object-cover" />
             </div>
           </div>
           <div className="flex-1 max-w-lg">
@@ -311,7 +328,7 @@ export default function ECommerceSolution() {
           </div>
           <div className="flex-1 relative hidden lg:block">
             {/* Using a placeholder photo for the contact section */}
-            <img src="/contact_team.jpg" alt="Contact Team" className="absolute inset-0 w-full h-full object-cover" />
+            <img src="/team_in_office.avif" alt="Contact Team" className="absolute inset-0 w-full h-full object-cover" />
           </div>
         </div>
       </section>

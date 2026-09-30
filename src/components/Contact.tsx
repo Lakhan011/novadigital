@@ -12,70 +12,97 @@ export default function Contact() {
     message: "",
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [statusMessage, setStatusMessage] = useState<{ type: 'success' | 'error', text: string } | null>(null);
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // simulate submission
-    alert("Message sent successfully!");
-    setFormData({ firstName: "", lastName: "", mobile: "", email: "", message: "" });
+    if (isSubmitting) return;
+
+    setIsSubmitting(true);
+    setStatusMessage(null);
+
+    try {
+      const { submitToGoogleSheets } = await import('@/app/actions');
+      
+      const response = await submitToGoogleSheets(formData);
+
+      if (response.success) {
+        setStatusMessage({ type: 'success', text: "Thank you! Your message has been sent successfully." });
+        setFormData({ firstName: "", lastName: "", mobile: "", email: "", message: "" });
+      } else {
+        setStatusMessage({ type: 'error', text: "Something went wrong. Please try again later." });
+      }
+    } catch (error) {
+      console.error("Form submission error:", error);
+      setStatusMessage({ type: 'error', text: "Network error. Please check your connection and try again." });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
     <section id="contact" className="w-full">
       {/* Top Part: Contact Info & Form */}
-      <div className="bg-gradient-to-b from-[#F9F7FF] to-[#F3F0FF] pt-[80px] pb-[80px] md:pt-[120px] md:pb-[100px]">
+      <div className="bg-gradient-to-b from-[#F9F7FF] to-[#F3F0FF] py-[20px] md:py-[40px]">
         <div className="container-main">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-[80px] items-start">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-[40px] items-start">
             
             {/* Left Column: Info */}
             <div>
-              <div className="inline-block bg-[#E9E4FF] text-[#315CF5] font-bold text-[12px] px-4 py-2 rounded-full mb-6">
+              <div className="inline-block bg-[#E9E4FF] text-[#315CF5] font-bold text-[11px] px-3 py-1.5 rounded-full mb-4">
                 CONNECT WITH US
               </div>
               
-              <h2 className="text-[36px] md:text-[48px] font-extrabold text-[#071B3A] leading-[1.2] tracking-tight mb-10">
+              <h2 className="text-[32px] md:text-[40px] font-extrabold text-[#071B3A] leading-[1.2] tracking-tight mb-6">
                 Ready to grow online?<br />
                 <span className="text-[#A855F7]">Connect with NovaDigital</span> your partner in digital success!
               </h2>
 
-              <div className="flex flex-col gap-8">
+              <div className="flex flex-col gap-5">
                 {/* Address */}
-                <div className="flex gap-4">
-                  <div className="w-12 h-12 rounded-full bg-[#A855F7] text-white flex items-center justify-center flex-shrink-0 mt-1">
-                    <MapPin size={24} />
+                <div className="flex gap-3">
+                  <div className="w-10 h-10 rounded-full bg-[#A855F7] text-white flex items-center justify-center flex-shrink-0 mt-1">
+                    <MapPin size={18} />
                   </div>
                   <div>
-                    <h4 className="text-[20px] font-bold text-navy mb-1">Address</h4>
-                    <p className="text-gray-500 leading-relaxed max-w-[300px]">
-                      70, Sector 63 Rd, G Block, Sector 63, Noida, Uttar Pradesh 201301
+                    <h4 className="text-[16px] font-bold text-navy mb-0.5">Address</h4>
+                    <p className="text-gray-500 text-[14px] leading-relaxed max-w-[350px]">
+                      Knowledge Park III, Greater Noida, UP
                     </p>
                   </div>
                 </div>
 
                 {/* Phone */}
-                <div className="flex gap-4">
-                  <div className="w-12 h-12 rounded-full bg-[#315CF5] text-white flex items-center justify-center flex-shrink-0 mt-1">
-                    <Phone size={24} />
+                <div className="flex gap-3">
+                  <div className="w-10 h-10 rounded-full bg-[#315CF5] text-white flex items-center justify-center flex-shrink-0 mt-1">
+                    <Phone size={18} />
                   </div>
                   <div>
-                    <h4 className="text-[20px] font-bold text-navy mb-1">Phone Number</h4>
-                    <p className="text-gray-500 leading-relaxed">
-                      +91 82870 80162<br />
-                      +91 99291 20236<br />
-                      +97 1527295912
+                    <h4 className="text-[16px] font-bold text-navy mb-0.5">Phone Number</h4>
+                    <p className="text-gray-500 text-[14px] leading-relaxed flex items-center gap-2">
+                      <span>+91 81718 36488</span>
+                      <span className="text-gray-300">|</span>
+                      <span>8081796708</span>
                     </p>
                   </div>
                 </div>
 
                 {/* Email */}
-                <div className="flex gap-4">
-                  <div className="w-12 h-12 rounded-full bg-[#A855F7] text-white flex items-center justify-center flex-shrink-0 mt-1">
-                    <Mail size={24} />
+                <div className="flex gap-3">
+                  <div className="w-10 h-10 rounded-full bg-[#A855F7] text-white flex items-center justify-center flex-shrink-0 mt-1">
+                    <Mail size={18} />
                   </div>
                   <div>
-                    <h4 className="text-[20px] font-bold text-navy mb-1">E-mail Address</h4>
-                    <p className="text-gray-500 leading-relaxed">
-                      sales@novadigital.com<br />
-                      support@novadigital.com
+                    <h4 className="text-[16px] font-bold text-navy mb-0.5">E-mail Address</h4>
+                    <p className="text-gray-500 text-[14px] leading-relaxed flex items-center gap-2 flex-wrap">
+                      <a href="mailto:mdrizwansaifi@gmail.com" className="hover:text-[#315CF5] transition-colors">
+                        mdrizwansaifi@gmail.com
+                      </a>
+                      <span className="text-gray-300">|</span>
+                      <a href="mailto:lakhan.gupta@shardatech.com" className="hover:text-[#315CF5] transition-colors">
+                        lakhan.gupta@shardatech.com
+                      </a>
                     </p>
                   </div>
                 </div>
@@ -83,20 +110,20 @@ export default function Contact() {
             </div>
 
             {/* Right Column: Form */}
-            <div className="bg-white rounded-[24px] p-6 md:p-10 shadow-[0_10px_40px_rgba(0,0,0,0.08)]">
-              <form onSubmit={handleSubmit} className="flex flex-col gap-6">
+            <div className="bg-white rounded-[24px] p-6 md:p-8 shadow-[0_10px_40px_rgba(0,0,0,0.08)]">
+              <form onSubmit={handleSubmit} className="flex flex-col gap-4">
                 <div>
-                  <label className="block text-[#071B3A] font-bold text-[15px] mb-3">Name <span className="text-red-500">*</span></label>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <label className="block text-[#071B3A] font-bold text-[14px] mb-2">Name <span className="text-red-500">*</span></label>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                     <div>
                       <input 
                         type="text" 
                         required
                         value={formData.firstName}
                         onChange={(e) => setFormData({...formData, firstName: e.target.value})}
-                        className="w-full border border-gray-200 rounded-xl px-4 py-3 text-[#071B3A] focus:outline-none focus:border-[#315CF5] transition-colors" 
+                        className="w-full border border-gray-200 rounded-lg px-3 py-2 text-[14px] text-[#071B3A] focus:outline-none focus:ring-2 focus:ring-[#315CF5]/20 focus:border-[#315CF5] transition-all duration-200" 
                       />
-                      <span className="text-gray-400 text-xs mt-1 block">First</span>
+                      <span className="text-gray-400 text-[11px] mt-1 block">First</span>
                     </div>
                     <div>
                       <input 
@@ -104,51 +131,67 @@ export default function Contact() {
                         required
                         value={formData.lastName}
                         onChange={(e) => setFormData({...formData, lastName: e.target.value})}
-                        className="w-full border border-gray-200 rounded-xl px-4 py-3 text-[#071B3A] focus:outline-none focus:border-[#315CF5] transition-colors" 
+                        className="w-full border border-gray-200 rounded-lg px-3 py-2 text-[14px] text-[#071B3A] focus:outline-none focus:ring-2 focus:ring-[#315CF5]/20 focus:border-[#315CF5] transition-all duration-200" 
                       />
-                      <span className="text-gray-400 text-xs mt-1 block">Last</span>
+                      <span className="text-gray-400 text-[11px] mt-1 block">Last</span>
                     </div>
                   </div>
                 </div>
 
                 <div>
-                  <label className="block text-[#071B3A] font-bold text-[15px] mb-2">Mobile Number <span className="text-red-500">*</span></label>
+                  <label className="block text-[#071B3A] font-bold text-[14px] mb-1.5">Mobile Number <span className="text-red-500">*</span></label>
                   <input 
                     type="tel" 
                     required
                     value={formData.mobile}
                     onChange={(e) => setFormData({...formData, mobile: e.target.value})}
-                    className="w-full border border-gray-200 rounded-xl px-4 py-3 text-[#071B3A] focus:outline-none focus:border-[#315CF5] transition-colors" 
+                    className="w-full border border-gray-200 rounded-lg px-3 py-2 text-[14px] text-[#071B3A] focus:outline-none focus:ring-2 focus:ring-[#315CF5]/20 focus:border-[#315CF5] transition-all duration-200" 
                   />
                 </div>
 
                 <div>
-                  <label className="block text-[#071B3A] font-bold text-[15px] mb-2">Email <span className="text-red-500">*</span></label>
+                  <label className="block text-[#071B3A] font-bold text-[14px] mb-1.5">Email <span className="text-red-500">*</span></label>
                   <input 
                     type="email" 
                     required
                     value={formData.email}
                     onChange={(e) => setFormData({...formData, email: e.target.value})}
-                    className="w-full border border-gray-200 rounded-xl px-4 py-3 text-[#071B3A] focus:outline-none focus:border-[#315CF5] transition-colors" 
+                    className="w-full border border-gray-200 rounded-lg px-3 py-2 text-[14px] text-[#071B3A] focus:outline-none focus:ring-2 focus:ring-[#315CF5]/20 focus:border-[#315CF5] transition-all duration-200" 
                   />
                 </div>
 
                 <div>
-                  <label className="block text-[#071B3A] font-bold text-[15px] mb-2">Comment or Message</label>
+                  <label className="block text-[#071B3A] font-bold text-[14px] mb-1.5">Comment or Message</label>
                   <textarea 
-                    rows={4}
+                    rows={2}
                     value={formData.message}
                     onChange={(e) => setFormData({...formData, message: e.target.value})}
-                    className="w-full border border-gray-200 rounded-xl px-4 py-3 text-[#071B3A] focus:outline-none focus:border-[#315CF5] transition-colors resize-y" 
+                    className="w-full border border-gray-200 rounded-lg px-3 py-2 text-[14px] text-[#071B3A] focus:outline-none focus:ring-2 focus:ring-[#315CF5]/20 focus:border-[#315CF5] transition-all duration-200 resize-y" 
                   />
                 </div>
 
                 <div>
+                  {statusMessage && (
+                    <div className={`mb-4 p-3 rounded-xl text-[14px] font-medium ${statusMessage.type === 'success' ? 'bg-green-50 text-green-700 border border-green-200' : 'bg-red-50 text-red-700 border border-red-200'}`}>
+                      {statusMessage.text}
+                    </div>
+                  )}
                   <button 
                     type="submit"
-                    className="bg-[#0066CC] hover:bg-[#0052a3] text-white font-bold py-3 px-8 rounded transition-colors"
+                    disabled={isSubmitting}
+                    className="bg-[#0066CC] hover:bg-[#0052a3] text-white font-bold py-3 px-8 rounded transition-colors disabled:opacity-70 disabled:cursor-not-allowed flex items-center justify-center gap-2"
                   >
-                    Submit
+                    {isSubmitting ? (
+                      <>
+                        <svg className="animate-spin -ml-1 mr-2 h-4 w-4 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                          <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                          <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                        </svg>
+                        Submitting...
+                      </>
+                    ) : (
+                      "Submit"
+                    )}
                   </button>
                 </div>
               </form>
@@ -159,17 +202,13 @@ export default function Contact() {
       </div>
 
       {/* Bottom Part: Map */}
-      <div className="w-full h-[400px] md:h-[500px] bg-gray-100">
-        <iframe 
-          src="https://maps.google.com/maps?q=70,+Sector+63+Rd,+G+Block,+Sector+63,+Noida,+Uttar+Pradesh+201301&t=&z=15&ie=UTF8&iwloc=&output=embed"
-          width="100%" 
-          height="100%" 
-          style={{ border: 0 }} 
-          allowFullScreen 
-          loading="lazy" 
-          referrerPolicy="no-referrer-when-downgrade"
-          title="NovaDigital Location"
-        ></iframe>
+      <div className="w-full h-[300px] md:h-[400px] bg-gray-100 relative group cursor-pointer overflow-hidden" onClick={() => window.open('https://maps.app.goo.gl/vaUCHvUugE9q8KVw9', '_blank')}>
+        {/* Static Map Image */}
+        <img 
+          src="/images/map-placeholder.jpg" 
+          alt="NovaDigital Location Map" 
+          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+        />
       </div>
     </section>
   );

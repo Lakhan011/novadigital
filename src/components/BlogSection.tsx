@@ -29,18 +29,20 @@ export default function BlogSection() {
               key={post.id} 
               className="group bg-white rounded-[16px] overflow-hidden shadow-[0_10px_30px_rgba(0,0,0,0.06)] hover:-translate-y-2 transition-all duration-300"
             >
-              <div className="relative w-full aspect-[16/10] bg-gray-100 overflow-hidden">
-                <div className="absolute inset-0 bg-gradient-to-br from-[#315CF5]/10 to-[#A855F7]/10 flex items-center justify-center">
-                  <span className="text-gray-400 font-medium">Blog Image</span>
-                </div>
-                <div className="absolute top-4 left-4 bg-white text-[#315CF5] text-[12px] font-bold px-3 py-1.5 rounded-full z-10">
+              <div className="relative w-full aspect-[16/10] bg-[#f8f9ff] overflow-hidden flex items-center justify-center p-2">
+                <img 
+                  src={post.image} 
+                  alt={post.title} 
+                  className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500 rounded-lg"
+                />
+                <div className="absolute top-4 left-4 bg-white text-[#315CF5] text-[12px] font-bold px-3 py-1.5 rounded-full z-10 shadow-sm">
                   {post.category}
                 </div>
               </div>
               
               <div className="p-[30px]">
                 <h3 className="text-[20px] font-bold text-[#071B3A] mb-4 group-hover:text-[#315CF5] transition-colors leading-[1.4]">
-                  <a href={`#blog-${post.slug}`} className="focus:outline-none">
+                  <a href={`/blog/${post.slug}`} className="focus:outline-none">
                     {post.title}
                   </a>
                 </h3>
@@ -48,7 +50,7 @@ export default function BlogSection() {
                   {post.description}
                 </p>
                 <a 
-                  href={`#blog-${post.slug}`}
+                  href={`/blog/${post.slug}`}
                   className="inline-flex items-center gap-2 text-[#315CF5] font-bold text-[15px] group-hover:gap-3 transition-all"
                 >
                   Read More <ArrowRight size={18} />

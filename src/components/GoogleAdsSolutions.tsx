@@ -27,7 +27,7 @@ export default function GoogleAdsSolutions() {
       </div>
 
       {/* 2. BENEFITS GRID */}
-      <div className="container-main py-20">
+      <div className="container-main pt-20 pb-32 md:pb-40">
         <div className="text-center max-w-3xl mx-auto mb-16">
           <h2 className="text-3xl md:text-4xl font-bold text-[#071B3A] mb-4">Why Invest in Google Ads?</h2>
           <p className="text-gray-500">Stop waiting for traffic. Instantly place your business at the top of Google search results and capture high-intent buyers.</p>

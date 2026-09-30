@@ -43,7 +43,7 @@ function AnimatedCounter({ end, duration = 2000, suffix = "" }: { end: number, d
 
 export default function WhyChooseUs() {
   return (
-    <section id="why-us" className="relative w-full py-[100px] md:py-[140px]">
+    <section id="why-us" className="relative w-full py-[20px] md:py-[40px]">
       {/* Background Overlay */}
       <div className="absolute inset-0 z-0 bg-[#071B3A] overflow-hidden">
         {/* Simulating dark image background */}
@@ -55,7 +55,7 @@ export default function WhyChooseUs() {
       </div>
 
       <div className="container-main relative z-10">
-        <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-[80px]">
+        <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-[60px]">
           
           {/* LEFT CONTENT */}
           <div className="w-full lg:w-[55%]">
@@ -63,17 +63,17 @@ export default function WhyChooseUs() {
               WHY CHOOSE US
             </div>
             
-            <h2 className="text-[36px] md:text-[48px] lg:text-[52px] font-bold text-white leading-[1.1] tracking-tight mb-6">
+            <h2 className="text-[32px] md:text-[40px] lg:text-[48px] font-bold text-white leading-[1.1] tracking-tight mb-4">
               Empowering Businesses<br />
               With <span className="gradient-text bg-clip-text text-transparent">Digital Excellence</span>
             </h2>
             
-            <p className="text-gray-300 text-[16px] md:text-[18px] leading-relaxed mb-12 max-w-[600px]">
+            <p className="text-gray-300 text-[15px] md:text-[16px] leading-relaxed mb-8 max-w-[600px]">
               Unlock the potential of your brand with our expert digital marketing and technology solutions. We deliver results that matter.
             </p>
 
             {/* Stats Grid */}
-            <div className="grid grid-cols-2 gap-y-10 gap-x-8">
+            <div className="grid grid-cols-2 gap-y-6 gap-x-8">
               {[
                 { end: 3, label: "Years Experience" },
                 { end: 50, label: "Projects Completed" },
@@ -81,7 +81,7 @@ export default function WhyChooseUs() {
                 { end: 10, label: "Services" },
               ].map((stat, i) => (
                 <div key={i} className="flex flex-col">
-                  <div className="text-[40px] md:text-[48px] font-bold text-white mb-1">
+                  <div className="text-[32px] md:text-[36px] font-bold text-white mb-0">
                     <AnimatedCounter end={stat.end} suffix="+" duration={2000} />
                   </div>
                   <div className="text-gray-400 font-medium text-[15px] uppercase tracking-wide">

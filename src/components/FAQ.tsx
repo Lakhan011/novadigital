@@ -78,17 +78,21 @@ export default function FAQ() {
               <div className="absolute top-[10%] right-[10%] w-[80%] h-[80%] bg-[#315CF5]/5 rounded-full blur-[60px]"></div>
 
               {/* Image 1 (Main) */}
-              <div className="absolute top-0 right-0 w-[80%] h-[75%] rounded-[30px] overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.15)] bg-gradient-to-br from-blue-100 to-purple-100 border-4 border-white">
-                <div className="absolute inset-0 flex items-center justify-center text-gray-400 font-medium">
-                  Main Image
-                </div>
+              <div className="absolute top-0 right-[10%] w-[80%] h-[75%] rounded-none overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.15)] bg-gradient-to-br from-blue-100 to-purple-100 border-4 border-white">
+                <img 
+                  src="/images/faq-main.png" 
+                  alt="FAQ Main" 
+                  className="w-full h-full object-cover object-center"
+                />
               </div>
               
               {/* Image 2 (Overlapping Secondary) */}
-              <div className="absolute bottom-[5%] left-0 w-[60%] h-[55%] rounded-[30px] overflow-hidden shadow-[0_30px_60px_rgba(0,0,0,0.2)] border-[12px] border-[#F8F8FF] bg-gradient-to-br from-purple-100 to-pink-100 z-10">
-                <div className="absolute inset-0 flex items-center justify-center text-gray-400 font-medium">
-                  Secondary Image
-                </div>
+              <div className="absolute bottom-[5%] left-0 w-[60%] h-[55%] rounded-none overflow-hidden shadow-[0_30px_60px_rgba(0,0,0,0.2)] border-[12px] border-[#F8F8FF] bg-gradient-to-br from-purple-100 to-pink-100 z-10">
+                <img 
+                  src="/images/faq-secondary.png" 
+                  alt="FAQ Secondary" 
+                  className="w-full h-full object-cover object-center"
+                />
               </div>
 
               {/* Floating Element */}

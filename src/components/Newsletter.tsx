@@ -8,7 +8,7 @@ export default function Newsletter() {
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
   const [message, setMessage] = useState("");
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
       setStatus("error");
@@ -16,13 +16,34 @@ export default function Newsletter() {
       return;
     }
 
+    if (status === "loading") return;
     setStatus("loading");
-    // Simulate API call
-    setTimeout(() => {
-      setStatus("success");
-      setMessage("Subscribed successfully!");
-      setEmail("");
-    }, 1500);
+    setMessage("");
+
+    try {
+      const { submitToGoogleSheets } = await import('@/app/actions');
+      
+      const response = await submitToGoogleSheets({
+        firstName: "",
+        lastName: "",
+        mobile: "",
+        email: email,
+        message: "Newsletter Subscription"
+      });
+
+      if (response.success) {
+        setStatus("success");
+        setMessage("Subscribed successfully!");
+        setEmail("");
+      } else {
+        setStatus("error");
+        setMessage("Something went wrong. Please try again later.");
+      }
+    } catch (error) {
+      console.error("Subscription error:", error);
+      setStatus("error");
+      setMessage("Network error. Please check your connection and try again.");
+    }
   };
 
   return (

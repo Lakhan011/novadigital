@@ -43,6 +43,10 @@ export const metadata: Metadata = {
     index: true,
     follow: true,
   },
+  icons: {
+    icon: "/favicon_novadigital.png",
+    apple: "/favicon_novadigital.png",
+  },
 };
 
 import Navbar from "@/components/Navbar";

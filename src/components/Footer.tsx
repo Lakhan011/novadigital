@@ -15,12 +15,9 @@ export default function Footer() {
           
           {/* COLUMN 1 */}
           <div className="flex flex-col">
-            <a href="#home" className="flex items-center gap-2 text-[24px] font-bold text-navy mb-6">
-              <div className="flex items-center justify-center w-10 h-10 rounded-full gradient-bg text-white">
-                <Globe size={24} strokeWidth={2.5} />
-              </div>
-              <span className="tracking-tight">{siteConfig.name}</span>
-            </a>
+            <Link href="/#home" className="flex items-center mb-6 hover:opacity-90 transition-opacity">
+              <img src="/logo_novadigital.png" alt="NovaDigital Logo" className="w-[180px] md:w-[240px] h-auto object-contain scale-110 origin-left" />
+            </Link>
             <p className="text-gray-500 text-[15px] leading-relaxed mb-6 pr-4">
               Empowering brands with innovative marketing and tech solutions for lasting growth.
             </p>
@@ -43,12 +40,12 @@ export default function Footer() {
               ))}
             </div>
             <div>
-              <a
-                href="#contact"
+              <Link
+                href="/#contact"
                 className="inline-flex items-center gap-2 text-[#071B3A] font-bold text-[14px] px-6 py-3 rounded-full border-2 border-[#A855F7]/30 hover:border-[#315CF5] transition-all"
               >
                 Request For Information <ArrowRight size={16} />
-              </a>
+              </Link>
             </div>
           </div>
 
@@ -95,10 +92,12 @@ export default function Footer() {
             <h4 className="text-[18px] font-bold text-navy mb-6">Get Contact</h4>
             <ul className="flex flex-col gap-4 mb-6">
               <li className="text-gray-500 text-[15px]">
-                <span className="font-semibold text-gray-700">Phone:</span> +91 82870 80162
+                <span className="font-semibold text-gray-700">Phone:</span> +91 81718 36488, 8081796708
               </li>
               <li className="text-gray-500 text-[15px]">
-                <span className="font-semibold text-gray-700">E-mail:</span> sales@novadigital.com
+                <span className="font-semibold text-gray-700">E-mail:</span> {/* sales@novadigital.com<br/> */}
+                mdrizwansaifi@gmail.com<br/>
+                lakhan.gupta@shardatech.com
               </li>
               <li className="text-gray-500 text-[15px]">
                 Office address - DIP2 , Dubai UAE

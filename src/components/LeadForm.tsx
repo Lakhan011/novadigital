@@ -6,6 +6,7 @@ import { ArrowRight, CheckCircle } from "lucide-react";
 export default function LeadForm() {
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
+  const [toastMessage, setToastMessage] = useState<string | null>(null);
   
   const [formData, setFormData] = useState({
     name: "",
@@ -27,17 +28,42 @@ export default function LeadForm() {
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const showToast = (msg: string) => {
+    setToastMessage(msg);
+    setTimeout(() => setToastMessage(null), 4000);
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!validate()) return;
+    if (loading) return;
     
     setLoading(true);
-    // Simulate API call
-    setTimeout(() => {
+
+    try {
+      // Import the server action dynamically to avoid top-level issues, or standard import
+      const { submitToGoogleSheets } = await import('@/app/actions');
+      
+      const response = await submitToGoogleSheets({
+        firstName: formData.name,
+        lastName: "",
+        mobile: formData.phone,
+        email: formData.email,
+        message: formData.service ? `Interested in: ${formData.service}` : "General Lead"
+      });
+
+      if (response.success) {
+        setSuccess(true);
+        setFormData({ name: "", email: "", phone: "", service: "" });
+      } else {
+        showToast("Something went wrong. Please try again later.");
+      }
+    } catch (error) {
+      console.error("Lead form error:", error);
+      showToast("Network error. Please check your connection and try again.");
+    } finally {
       setLoading(false);
-      setSuccess(true);
-      setFormData({ name: "", email: "", phone: "", service: "" });
-    }, 1500);
+    }
   };
 
   if (success) {
@@ -58,19 +84,25 @@ export default function LeadForm() {
     );
   }
 
-  const inputClass = "w-full bg-transparent border-0 border-b border-gray-200 py-4 px-0 text-[#071B3A] focus:ring-0 focus:outline-none focus:border-[#315CF5] focus:border-b-2 transition-colors placeholder:text-gray-400";
+  const inputClass = "w-full bg-transparent border-0 border-b border-gray-200 py-2 px-0 text-[13px] md:text-[14px] text-[#071B3A] focus:ring-0 focus:outline-none focus:border-[#315CF5] focus:border-b-2 transition-colors placeholder:text-gray-400";
 
   return (
-    <div className="bg-white rounded-[8px] p-[40px] md:p-[50px] shadow-[0_20px_50px_rgba(0,0,0,0.15)]">
-      <div className="inline-block bg-[#F7F5FF] text-[#A855F7] font-bold text-[12px] px-3 py-1.5 rounded-full mb-6">
+    <div className="relative bg-white rounded-[8px] p-[20px] md:p-[24px] shadow-[0_20px_50px_rgba(0,0,0,0.15)]">
+      {/* Toast Notification */}
+      {toastMessage && (
+        <div className="absolute top-4 left-1/2 -translate-x-1/2 w-[90%] bg-red-50 text-red-600 border border-red-200 px-4 py-3 rounded-lg shadow-lg z-50 text-sm font-medium text-center">
+          {toastMessage}
+        </div>
+      )}
+      <div className="inline-block bg-[#F7F5FF] text-[#A855F7] font-bold text-[10px] px-2 py-1 rounded-full mb-2">
         DIGITAL SOLUTIONS FOR EVERYONE
       </div>
       
-      <h3 className="text-[28px] font-bold text-navy mb-8">
+      <h3 className="text-[20px] font-bold text-navy mb-4">
         Explore Our Services
       </h3>
 
-      <form onSubmit={handleSubmit} className="flex flex-col gap-6">
+      <form onSubmit={handleSubmit} className="flex flex-col gap-3">
         <div>
           <input
             type="text"
@@ -123,10 +155,10 @@ export default function LeadForm() {
         <button
           type="submit"
           disabled={loading}
-          className="mt-4 flex items-center justify-center gap-2 gradient-bg text-white font-bold text-[16px] w-full py-4 rounded-xl hover:opacity-90 transition-opacity disabled:opacity-70"
+          className="mt-2 flex items-center justify-center gap-2 gradient-bg text-white font-bold text-[15px] w-full py-3 rounded-xl hover:opacity-90 transition-opacity disabled:opacity-70"
         >
           {loading ? "Submitting..." : (
-            <>GET IT NOW <ArrowRight size={20} /></>
+            <>GET IT NOW <ArrowRight size={18} /></>
           )}
         </button>
       </form>
