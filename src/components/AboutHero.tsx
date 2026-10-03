@@ -47,7 +47,7 @@ export default function AboutHero() {
   return (
     <section 
       id="about" 
-      className="relative pt-[120px] pb-[80px] md:pt-[160px] md:pb-[100px] overflow-hidden bg-gradient-to-br from-white via-[#F0F5FF] to-[#F8F5FF]"
+      className="relative pt-[40px] pb-[20px] md:pt-[60px] md:pb-[40px] overflow-hidden bg-gradient-to-br from-white via-[#F0F5FF] to-[#F8F5FF]"
     >
       <div className="container-main relative z-10">
         <div className="flex flex-col items-center text-center max-w-[900px] mx-auto">

@@ -24,7 +24,7 @@ export default function VisionMission() {
   return (
     <section 
       id="vision-mission" 
-      className="relative pt-[180px] pb-[100px] md:pt-[220px] md:pb-[120px] overflow-hidden bg-gradient-to-br from-white via-[#F8F5FF] to-[#F0F5FF]"
+      className="relative pt-[60px] pb-[40px] md:pt-[80px] md:pb-[60px] overflow-hidden bg-gradient-to-br from-white via-[#F8F5FF] to-[#F0F5FF]"
     >
       <div className="container-main relative z-10">
         <div className="flex flex-col items-center text-center max-w-[900px] mx-auto">

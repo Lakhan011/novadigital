@@ -14,6 +14,8 @@ export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
   const pathname = usePathname();
   const router = useRouter();
 
@@ -47,7 +49,7 @@ export default function Navbar() {
       }`}
     >
       {/* TOP BAR */}
-      <div className="hidden lg:block bg-[#0F172A] text-white text-[13px] py-2 border-b border-white/10">
+      <div className="hidden bg-[#0F172A] text-white text-[13px] py-2 border-b border-white/10">
         <div className="container-main flex items-center justify-between">
           <div className="flex items-center gap-6 text-gray-300">
             <div className="flex items-center gap-1.5 hover:text-white cursor-pointer transition-colors">
@@ -58,7 +60,7 @@ export default function Navbar() {
             </div>
             <div className="flex items-center gap-2 hover:text-white cursor-pointer transition-colors">
               <span>📞</span>
-              <span className="font-medium">+91 81718 36488 &nbsp;&nbsp; 8081796708</span>
+              <span className="font-medium">8882605242</span>
             </div>
           </div>
           
@@ -112,7 +114,7 @@ export default function Navbar() {
           }}
           className="flex items-center z-50 hover:opacity-90 transition-opacity"
         >
-          <img src="/logo_novadigital.png" alt="NovaDigital Logo" className="w-[140px] md:w-[180px] h-auto object-contain scale-110 origin-left" />
+          <img src="/logo_novadigital_tech.png" alt="NovaDigital Logo" className="h-[80px] w-auto object-contain" />
         </a>
 
         {/* DESKTOP NAV */}
@@ -185,28 +187,49 @@ export default function Navbar() {
 
         {/* DESKTOP RIGHT ACTIONS */}
         <div className="hidden lg:flex items-center gap-5">
-          <button className="text-[#071B3A] hover:text-[#315CF5] transition-colors">
-            <Search size={22} />
-          </button>
+          {isSearchOpen ? (
+            <div className="flex items-center bg-gray-50 rounded-full px-4 py-2 border border-gray-200 w-[250px] transition-all">
+              <Search size={16} className="text-gray-400 mr-2" />
+              <input
+                type="text"
+                placeholder="Search..."
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                className="bg-transparent border-none outline-none focus:outline-none focus:ring-0 focus:border-transparent w-full text-sm text-[#071B3A] p-0"
+                autoFocus
+              />
+              <button onClick={() => setIsSearchOpen(false)} className="text-gray-400 hover:text-red-500 ml-2">
+                <X size={16} />
+              </button>
+            </div>
+          ) : (
+            <button onClick={() => setIsSearchOpen(true)} className="text-[#071B3A] hover:text-[#315CF5] transition-colors">
+              <Search size={22} />
+            </button>
+          )}
+          {/*
           <button className="relative text-[#071B3A] hover:text-[#315CF5] transition-colors">
             <ShoppingCart size={22} />
             <span className="absolute -top-1.5 -right-2 bg-red-500 text-white text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center">
               0
             </span>
           </button>
+          */}
           
+          {/* 
           <div className="w-[1px] h-6 bg-gray-200 mx-1"></div>
 
           <button className="text-[#071B3A] hover:text-[#315CF5] transition-colors flex items-center gap-2 font-medium">
             <User size={22} />
             <span className="text-[15px]">Admin</span>
           </button>
+          */}
 
           <button
             onClick={() => scrollToSection("#contact")}
             className="gradient-bg text-white font-semibold rounded-lg px-6 py-2.5 hover:opacity-90 transition-opacity ml-2"
           >
-            Quick Payment
+            Let's Connect
           </button>
         </div>
 
@@ -224,7 +247,7 @@ export default function Navbar() {
         <div className="fixed inset-0 z-[2000] bg-white flex flex-col overflow-y-auto">
           <div className="container-main h-[80px] flex items-center justify-between border-b border-gray-100 flex-shrink-0">
             <div className="flex items-center gap-2">
-              <img src="/logo_novadigital.png" alt="NovaDigital Logo" className="w-[140px] h-auto object-contain scale-110 origin-left" />
+              <img src="/logo_novadigital_tech.png" alt="NovaDigital Logo" className="h-[80px] w-auto object-contain" />
             </div>
             <button
               onClick={() => setMobileMenuOpen(false)}
@@ -301,7 +324,7 @@ export default function Navbar() {
               onClick={() => scrollToSection("#contact")}
               className="gradient-bg text-white font-bold rounded-xl px-6 py-4 mt-2 text-lg text-center"
             >
-              Quick Payment
+              Let's Connect
             </button>
           </div>
         </div>

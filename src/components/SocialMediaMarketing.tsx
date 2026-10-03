@@ -81,7 +81,7 @@ export default function SocialMediaMarketing() {
       </div>
 
       {/* 3. PLATFORM SERVICES (Dark Blue Container) */}
-      <div className="w-full bg-gradient-to-b from-[#1C46A8] to-[#123282] py-20 lg:py-32 flex flex-col gap-32 overflow-hidden">
+      <div className="w-full bg-gradient-to-b from-[#1C46A8] to-[#123282] pt-20 pb-10 lg:pt-32 lg:pb-16 flex flex-col gap-24 lg:gap-32 overflow-hidden">
         
         {/* Facebook */}
         <div className="container-main relative">
@@ -296,7 +296,7 @@ export default function SocialMediaMarketing() {
       </div>
 
       {/* 4. YOUTUBE MARKETING SECTION (Dark Gray Background) */}
-      <div className="w-full bg-gradient-to-b from-[#4A4F5C] to-[#3B404E] py-20 lg:py-32 relative overflow-hidden">
+      <div className="w-full bg-gradient-to-b from-[#4A4F5C] to-[#3B404E] pt-10 pb-20 lg:pt-16 lg:pb-32 relative overflow-hidden">
         <div className="container-main relative">
           <div className="absolute left-0 top-1/2 -translate-y-1/2 w-[400px] h-[400px] bg-gradient-to-tr from-[#FFB800] via-[#FF3366] to-[#6600FF] rounded-full opacity-90 z-0"></div>
           

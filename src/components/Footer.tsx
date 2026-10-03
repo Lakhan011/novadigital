@@ -16,7 +16,7 @@ export default function Footer() {
           {/* COLUMN 1 */}
           <div className="flex flex-col">
             <Link href="/#home" className="flex items-center mb-6 hover:opacity-90 transition-opacity">
-              <img src="/logo_novadigital.png" alt="NovaDigital Logo" className="w-[180px] md:w-[240px] h-auto object-contain scale-110 origin-left" />
+              <img src="/logo_novadigital_tech.png" alt="NovaDigital Logo" className="w-[180px] md:w-[220px] h-auto object-contain" />
             </Link>
             <p className="text-gray-500 text-[15px] leading-relaxed mb-6 pr-4">
               Empowering brands with innovative marketing and tech solutions for lasting growth.
@@ -92,15 +92,13 @@ export default function Footer() {
             <h4 className="text-[18px] font-bold text-navy mb-6">Get Contact</h4>
             <ul className="flex flex-col gap-4 mb-6">
               <li className="text-gray-500 text-[15px]">
-                <span className="font-semibold text-gray-700">Phone:</span> +91 81718 36488, 8081796708
+                <span className="font-semibold text-gray-700">Phone:</span> 8882605242
               </li>
               <li className="text-gray-500 text-[15px]">
-                <span className="font-semibold text-gray-700">E-mail:</span> {/* sales@novadigital.com<br/> */}
-                mdrizwansaifi@gmail.com<br/>
-                lakhan.gupta@shardatech.com
+                <span className="font-semibold text-gray-700">E-mail:</span> support@novadigital.world
               </li>
               <li className="text-gray-500 text-[15px]">
-                Office address - DIP2 , Dubai UAE
+                Anthurium sector 73 Noida 201301 UTTAR PRADESH
               </li>
             </ul>
             <div className="flex items-center gap-4 text-gray-500">
@@ -126,11 +124,13 @@ export default function Footer() {
         </div>
 
         {/* Divider & Copyright */}
+        {/*
         <div className="border-t border-gray-100 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-gray-500 text-[14px]">
             {siteConfig.copyright}
           </p>
         </div>
+        */}
       </div>
     </footer>
   );

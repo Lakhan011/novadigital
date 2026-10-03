@@ -26,7 +26,7 @@ export default function FAQ() {
         <div className="flex flex-col lg:flex-row gap-12 lg:gap-[60px]">
           
           {/* LEFT: Accordion */}
-          <div className="w-full lg:w-[55%] flex flex-col gap-4">
+          <div className="w-full lg:w-[50%] flex flex-col gap-4">
             {faqData.map((item) => {
               const isActive = activeId === item.id;
               
@@ -71,23 +71,23 @@ export default function FAQ() {
           </div>
 
           {/* RIGHT: Image Composition */}
-          <div className="hidden lg:block w-full lg:w-[45%] relative">
-            <div className="relative w-full h-[600px]">
+          <div className="hidden lg:block w-full lg:w-[50%] relative pl-6">
+            <div className="relative w-full h-[500px]">
               
               {/* Main Background Blob */}
               <div className="absolute top-[10%] right-[10%] w-[80%] h-[80%] bg-[#315CF5]/5 rounded-full blur-[60px]"></div>
 
               {/* Image 1 (Main) */}
-              <div className="absolute top-0 left-[40%] w-[80%] h-[75%] rounded-none overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.15)] bg-gradient-to-br from-blue-100 to-purple-100 border-4 border-white">
+              <div className="absolute top-0 right-0 w-full h-[85%] rounded-2xl overflow-hidden shadow-[0_20px_60px_rgba(0,0,0,0.4)] border-[6px] border-[#5057d9] z-0">
                 <img 
                   src="/images/faq-main.png" 
                   alt="FAQ Main" 
-                  className="w-full h-full object-cover object-right"
+                  className="w-full h-full object-cover object-center"
                 />
               </div>
               
               {/* Image 2 (Overlapping Secondary) */}
-              <div className="absolute bottom-[5%] left-0 w-[60%] h-[55%] rounded-none overflow-hidden shadow-[0_30px_60px_rgba(0,0,0,0.2)] border-[12px] border-[#F8F8FF] bg-gradient-to-br from-purple-100 to-pink-100 z-10">
+              <div className="absolute bottom-0 left-[-5%] w-[45%] h-[50%] rounded-2xl overflow-hidden shadow-[0_20px_60px_rgba(0,0,0,0.4)] border-[6px] border-[#5057d9] z-10">
                 <img 
                   src="/images/faq-secondary.png" 
                   alt="FAQ Secondary" 

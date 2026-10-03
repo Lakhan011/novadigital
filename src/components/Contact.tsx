@@ -68,7 +68,7 @@ export default function Contact() {
                   <div>
                     <h4 className="text-[16px] font-bold text-navy mb-0.5">Address</h4>
                     <p className="text-gray-500 text-[14px] leading-relaxed max-w-[350px]">
-                      Knowledge Park III, Greater Noida, UP
+                      Anthurium sector 73 Noida 201301 UTTAR PRADESH
                     </p>
                   </div>
                 </div>
@@ -81,9 +81,7 @@ export default function Contact() {
                   <div>
                     <h4 className="text-[16px] font-bold text-navy mb-0.5">Phone Number</h4>
                     <p className="text-gray-500 text-[14px] leading-relaxed flex items-center gap-2">
-                      <span>+91 81718 36488</span>
-                      <span className="text-gray-300">|</span>
-                      <span>8081796708</span>
+                      <span>8882605242</span>
                     </p>
                   </div>
                 </div>
@@ -96,12 +94,8 @@ export default function Contact() {
                   <div>
                     <h4 className="text-[16px] font-bold text-navy mb-0.5">E-mail Address</h4>
                     <p className="text-gray-500 text-[14px] leading-relaxed flex items-center gap-2 flex-wrap">
-                      <a href="mailto:mdrizwansaifi@gmail.com" className="hover:text-[#315CF5] transition-colors">
-                        mdrizwansaifi@gmail.com
-                      </a>
-                      <span className="text-gray-300">|</span>
-                      <a href="mailto:lakhan.gupta@shardatech.com" className="hover:text-[#315CF5] transition-colors">
-                        lakhan.gupta@shardatech.com
+                      <a href="mailto:support@novadigital.world" className="hover:text-[#315CF5] transition-colors">
+                        support@novadigital.world
                       </a>
                     </p>
                   </div>
